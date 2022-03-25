@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
 import com.example.kotlincountryapptry.R
 
 class MainActivity : AppCompatActivity() {
@@ -12,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         navigationController=Navigation.findNavController(activity = this,R.id.fragment)
+        NavigationUI.setupActionBarWithNavController(this,navigationController)
 
     }
 }

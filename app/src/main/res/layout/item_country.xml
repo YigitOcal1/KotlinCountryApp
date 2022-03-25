@@ -24,10 +24,10 @@
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="name"
+                android:text="Qq"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:padding="5dp"></TextView>
+                android:padding="5dp" />
             <TextView
                 android:id="@+id/region"
                 android:layout_width="wrap_content"
