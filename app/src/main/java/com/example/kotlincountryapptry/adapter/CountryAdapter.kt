@@ -8,6 +8,8 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlincountryapptry.R
 import com.example.kotlincountryapptry.model.Country
+import com.example.kotlincountryapptry.util.myImageFunction
+import com.example.kotlincountryapptry.util.placeholderProgressBar
 import com.example.kotlincountryapptry.view.CountryFragmentDirections
 import kotlinx.android.synthetic.main.item_country.view.*
 import org.w3c.dom.Text
@@ -39,7 +41,9 @@ class CountryAdapter(val countryList:ArrayList<Country>): RecyclerView.Adapter<C
         holder.view.setOnClickListener {
             val action = CountryFragmentDirections.actionCountryFragmentToDetailFragment()
             Navigation.findNavController(it).navigate(action)
+
         }
+        holder.view.imageView.myImageFunction(countryList[position].imageUrl, placeholderProgressBar(holder.view.context))
     }
     override fun getItemCount(): Int {
        return countryList.size

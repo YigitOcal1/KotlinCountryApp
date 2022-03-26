@@ -52,6 +52,16 @@ class CountryFragment : Fragment() {
         button.setOnClickListener {
             val action=CountryFragmentDirections.actionCountryFragmentToDetailFragment()
         Navigation.findNavController(it).navigate(action)}*/
+
+        swipeRefreshLayout.setOnRefreshListener {
+            countryList.visibility=View.GONE
+            countyError.visibility=View.GONE
+            countryLoading.visibility=View.VISIBLE
+            viewModel.refreshData()
+            swipeRefreshLayout.isRefreshing=false
+
+        }
+
         observerLiveData()
     }
 private fun observerLiveData(){
