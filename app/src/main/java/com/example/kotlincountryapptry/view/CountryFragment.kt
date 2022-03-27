@@ -16,8 +16,10 @@ import com.example.kotlincountryapptry.R
 import com.example.kotlincountryapptry.adapter.CountryAdapter
 import com.example.kotlincountryapptry.viewmodel.CountryViewModel
 import kotlinx.android.synthetic.main.fragment_country.*
+import kotlinx.coroutines.InternalCoroutinesApi
 
 
+@InternalCoroutinesApi
 class CountryFragment : Fragment() {
 
     private lateinit var viewModel:CountryViewModel
@@ -40,7 +42,8 @@ class CountryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel= ViewModelProviders.of(this).get(CountryViewModel::class.java)
+        //viewModel= ViewModelProviders.of(this).get(CountryViewModel::class.java)
+        viewModel=ViewModelProvider(this).get(CountryViewModel::class.java)
         viewModel.refreshData()
         countryList.layoutManager=LinearLayoutManager(context)
         countryList.adapter=countryAdapter
@@ -57,7 +60,7 @@ class CountryFragment : Fragment() {
             countryList.visibility=View.GONE
             countyError.visibility=View.GONE
             countryLoading.visibility=View.VISIBLE
-            viewModel.refreshData()
+            viewModel.refreshFromAPI()
             swipeRefreshLayout.isRefreshing=false
 
         }

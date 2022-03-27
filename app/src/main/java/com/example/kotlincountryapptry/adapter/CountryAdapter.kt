@@ -18,10 +18,6 @@ class CountryAdapter(val countryList:ArrayList<Country>): RecyclerView.Adapter<C
 
 
 
-
-
-
-
     class CountryViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
 
     }
@@ -39,7 +35,8 @@ class CountryAdapter(val countryList:ArrayList<Country>): RecyclerView.Adapter<C
         holder.view.region.text = countryList[position].countryRegion
 
         holder.view.setOnClickListener {
-            val action = CountryFragmentDirections.actionCountryFragmentToDetailFragment()
+            val action = CountryFragmentDirections.actionCountryFragmentToDetailFragment(countryUuid = countryList[position].uuid)
+            println("qweqwefawsefwdenemmem"+countryList[position].uuid)
             Navigation.findNavController(it).navigate(action)
 
         }
